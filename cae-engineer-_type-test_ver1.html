@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101c30">
+<title>나는 어떤 CAE 엔지니어? · 태성에스엔이</title>
+<style>
+:root{color-scheme:dark;--bg:#101c30;--card:#1a2c46;--line:#3a4e6b;--text:#f5f8ff;--muted:#b2c0d3;--accent:#d7ff70;--warm:#ffc857}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;line-height:1.6}
+button,a{font:inherit;-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #76dfff;outline-offset:4px}
+.wrap{max-width:540px;margin:auto;padding:22px 20px 36px}
+header{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);margin-bottom:26px}
+header strong{color:#fff;font-size:15px}
+main{text-align:center}
+.eyebrow{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.5px;margin:0}
+h1{font-size:clamp(27px,7.2vw,35px);line-height:1.38;letter-spacing:-1px;margin:12px 0 14px}
+h2{font-size:clamp(21px,5.6vw,25px);line-height:1.45;letter-spacing:-.6px;margin:10px 0 20px}
+p{margin:0 0 18px;color:var(--muted);font-size:14px}
+.hero-icons{font-size:38px;letter-spacing:8px;margin:6px 0 8px}
+.types-preview{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:22px 0}
+.types-preview span{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 8px;font-size:13px;font-weight:800;color:#fff}
+.primary,.secondary,.link-btn{display:block;width:100%;border-radius:14px;padding:16px;text-align:center;text-decoration:none;font-weight:900;border:1px solid transparent}
+.primary{background:var(--accent);color:#101c30;box-shadow:0 4px 0 #8fae35}
+.primary:active{transform:translateY(2px);box-shadow:0 2px 0 #8fae35}
+.secondary{background:transparent;color:var(--muted);border-color:var(--line);margin-top:10px;font-weight:700;font-size:13px;padding:12px}
+.link-btn{background:#243b5a;color:#fff;border-color:var(--line);margin-top:10px;font-size:14px}
+.progress{display:flex;justify-content:center;gap:8px;margin:4px 0 20px}
+.progress span{height:7px;width:44px;border-radius:7px;background:#34435b}
+.progress span.on{background:var(--accent)}
+.q-icon{font-size:46px;line-height:1.2;margin:4px 0 0}
+.choices{display:grid;gap:10px;margin:22px 0 14px}
+.choice{display:flex;align-items:center;gap:13px;text-align:left;background:var(--card);border:1px solid var(--line);color:#fff;border-radius:14px;padding:15px 16px;font-size:15px;font-weight:700;line-height:1.45;transition:transform .15s,border-color .15s}
+.choice:hover{border-color:var(--accent);transform:translateX(3px)}
+.choice:active{transform:scale(.98)}
+.choice .ic{font-size:24px;flex:none}
+.back{background:none;border:0;color:var(--muted);font-size:13px;padding:8px}
+.screen{animation:arrive .25s ease-out}
+.result-card{background:linear-gradient(160deg,#22395a,#1a2c46);border:1px solid #4a6286;border-radius:22px;padding:26px 22px 22px;margin:14px 0 18px}
+.result-icon{font-size:64px;line-height:1.1;animation:pop .45s ease-out}
+.result-card h1{margin:10px 0 10px}
+.result-card .quote{color:#fff;font-size:15px;margin:0 0 14px}
+.result-card .desc{font-size:13px;margin:0}
+.session{background:#0c1626;border:1px solid var(--line);border-radius:16px;padding:18px;text-align:left;margin:16px 0}
+.session .tag{display:inline-block;background:var(--accent);color:#101c30;border-radius:7px;padding:3px 9px;font-size:11px;font-weight:900;margin-bottom:10px}
+.session time{display:block;color:var(--accent);font-size:13px;font-weight:800}
+.session strong{display:block;color:#fff;font-size:16px;line-height:1.55;margin:4px 0 6px}
+.session span{display:block;color:var(--muted);font-size:12px}
+.session .teaser{color:#dfe7f3;font-size:13px;margin:12px 0 0;padding-top:12px;border-top:1px dashed var(--line)}
+.gift{border-radius:18px;padding:20px;text-align:left;margin:16px 0}
+.gift.seminar{background:var(--warm);color:#1e1a0c}
+.gift.seminar p{color:#3d3519}
+.gift.booth{background:var(--card);border:1px solid var(--line)}
+.gift .g-label{font-size:11px;font-weight:900;letter-spacing:.6px;margin:0 0 6px}
+.gift h3{margin:0 0 8px;font-size:18px;line-height:1.45;letter-spacing:-.4px}
+.gift p{margin:0;font-size:13px}
+.gift ol{margin:12px 0 0;padding-left:20px;font-size:13px;line-height:1.75}
+.gift .count{display:inline-block;background:#1e1a0c;color:var(--warm);border-radius:7px;padding:2px 8px;font-size:12px;font-weight:900;margin-left:4px;vertical-align:2px}
+.gift.booth h3{color:#fff}
+.gift.booth p{color:var(--muted)}
+details.agenda{margin:16px 0;text-align:left}
+details.agenda>summary{list-style:none;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;font-weight:800;font-size:14px}
+details.agenda>summary::-webkit-details-marker{display:none}
+details.agenda>summary:after{content:' ＋'}
+details.agenda[open]>summary:after{content:' −'}
+.agenda-body{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:10px}
+.agenda-body h3{margin:0 0 4px;font-size:17px}
+.agenda-body .place{font-size:12px;margin:0 0 6px}
+.agenda-list{list-style:none;margin:0;padding:0}
+.agenda-list li{padding:13px 0;border-top:1px solid var(--line)}
+.agenda-list li.mine{background:#d7ff7014;box-shadow:0 0 0 8px #d7ff7014;border-radius:6px}
+.agenda-list time{display:block;color:var(--accent);font-size:12px;font-weight:800}
+.agenda-list strong{display:block;color:#fff;font-size:14px;line-height:1.55;margin:3px 0}
+.agenda-list span{display:block;color:var(--muted);font-size:12px}
+.agenda-list .me{display:inline-block;margin-left:6px;font-size:11px;color:#101c30;background:var(--accent);border-radius:5px;padding:0 6px;font-weight:900}
+.show-staff{font-size:12px;color:#a8bbd2;margin:20px 0 0}
+footer{text-align:center;color:#8ea2bd;font-size:11px;margin-top:22px}
+@keyframes arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:.4;transform:scale(.85)}70%{transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(max-width:370px){.wrap{padding:18px 14px 30px}.choice{font-size:14px;padding:13px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><strong>태성에스엔이</strong><span>자동차 CAE × AI</span></header>
+  <main id="app" aria-live="polite"></main>
+  <footer id="foot">3문항 · 약 30초 · 정답 없는 유형 테스트</footer>
+</div>
+
+<script>
+'use strict';
+
+/* ===== 행사 정보 (필요 시 여기만 수정) ===== */
+const CONFIG = {
+  seminarDate: '11월 19일(목)',
+  seminarTime: '08:30–10:10',
+  seminarPlace: '6강연장(세미나6)',
+  giftName: '트래블백',
+  giftCount: 30,
+  giftPickupFrom: '11:00',
+  boothGift: '볼펜',
+  portalUrl: 'https://www.etsne.com/dataCenter',
+  seminarEndsAt: '2026-11-19T10:10:00+09:00',
+  // Google 캘린더 일정 (KST 08:30–10:10 → UTC 23:30–01:10)
+  calStart: '20261118T233000Z',
+  calEnd: '20261119T011000Z'
+};
+
+const sessions = [
+  {time:'08:30–08:40', title:'AI를 활용한 CAE의 미래, AI Agent에서 자동설계까지', speaker:'안영규 그룹장'},
+  {time:'08:40–09:10', title:'CAE도 이제 말로합니다. - AI Agent가 바꾸는 엔지니어링 자동화', speaker:'나도경 매니저'},
+  {time:'09:10–09:40', title:'Physical AI의 Sim-to-Real 갭 극복 및 구조 안정성 확보를 위한 동역학 해석', speaker:'이상혁 팀장'},
+  {time:'09:40–10:10', title:'해석 가속화와 자동설계를 위한 AI 예측 모델', speaker:'안영규 그룹장'}
+];
+
+/* 유형 → 세션 매칭 */
+const types = [
+  {icon:'🔁', name:'Ctrl+C·V 장인형',
+   quote:'"조건만 바꿔서 한 번만 더요"… 그 한 번이 벌써 몇 번째인지.',
+   desc:'해석 세팅, 결과 정리, 보고서 작성까지. 손에 익은 반복 작업이 많을수록 자동화 효과가 커지는 유형입니다.',
+   session:1, teaser:'반복되는 해석 세팅, 이제 말로 요청하면 어떨까요? AI Agent가 엔지니어링 자동화를 어떻게 바꾸는지 소개합니다.'},
+  {icon:'🙏', name:'시험차 앞 기도형',
+   quote:'해석은 통과했는데… 실차에서도 괜찮겠죠?',
+   desc:'가상과 실제의 차이, 움직일 때의 하중과 구조 안전이 늘 마음에 걸리는 꼼꼼한 검증형입니다.',
+   session:2, teaser:'가상환경에서 잘 되던 것이 실제에서도 될까요? Sim-to-Real 갭과 구조 안정성을 위한 동역학 해석을 다룹니다.'},
+  {icon:'♾️', name:'설계안 무한루프형',
+   quote:'설계 변경 3안 추가요? 네… 처음부터 다시 돌릴게요.',
+   desc:'설계안이 바뀔 때마다 해석을 반복하는 유형. 결과를 미리 예측할 수 있다면 탐색 범위가 훨씬 넓어집니다.',
+   session:3, teaser:'조건마다 해석을 다시 돌리는 대신, AI 예측 모델로 해석을 가속하고 자동설계에 다가가는 방법을 소개합니다.'},
+  {icon:'👀', name:'AI 눈치보기형',
+   quote:'AI 써보고는 싶은데… 우리 업무 어디에 쓰지?',
+   desc:'관심은 충분하고 시작점을 찾는 중인 유형. AI Agent부터 자동설계까지 큰 그림을 먼저 보면 길이 보입니다.',
+   session:0, teaser:'AI Agent에서 자동설계까지, CAE에 AI가 들어오는 전체 흐름을 첫 세션에서 짚어드립니다. 이어지는 세 세션까지 들으면 큰 그림이 완성돼요.'}
+];
+
+/* 선택지 순서와 무관하게 type 인덱스로 매칭 */
+const questions = [
+  {icon:'📬', title:'월요일 아침,<br>가장 무서운 메일 제목은?', options:[
+    {t:'"조건만 살짝 바꿔서 한 번만 더 부탁드려요"', type:0},
+    {t:'"시험 결과가 해석이랑 좀 다르게 나왔습니다"', type:1},
+    {t:'"설계 변경안 3개 추가됐습니다"', type:2},
+    {t:'"우리 팀도 AI 도입 검토해보래요"', type:3}]},
+  {icon:'⏳', title:'해석 돌려놓고<br>기다리는 동안 나는?', options:[
+    {t:'다음 케이스 세팅을 미리 복붙 중', type:0},
+    {t:'실험 데이터를 다시 들여다보는 중', type:1},
+    {t:'남은 설계안 개수를 세는 중', type:2},
+    {t:'AI 챗봇에 슬쩍 물어보는 중', type:3}]},
+  {icon:'🤖', title:'AI에게 딱 하나만<br>맡길 수 있다면?', options:[
+    {t:'해석 세팅과 결과 보고서 정리', type:0},
+    {t:'가상과 실제의 차이 보정', type:1},
+    {t:'설계안 결과 미리 예측', type:2},
+    {t:'뭘 맡길지부터 추천받기', type:3}]}
+];
+
+const app = document.getElementById('app');
+const foot = document.getElementById('foot');
+let step = -1, picks = [], orders = [];
+
+const params = new URLSearchParams(location.search);
+const forced = params.get('mode');
+const isAfter = () => forced === 'after' ||
+  (forced !== 'before' && Date.now() >= Date.parse(CONFIG.seminarEndsAt));
+
+function shuffle(a){return a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);}
+
+function calUrl(){
+  const q = new URLSearchParams({
+    action:'TEMPLATE',
+    text:'[태성에스엔이] AI로 연결되는 CAE의 미래 세미나',
+    dates: CONFIG.calStart + '/' + CONFIG.calEnd,
+    location: CONFIG.seminarPlace,
+    details:'08:30 안영규 그룹장 · 08:40 나도경 매니저 · 09:10 이상혁 팀장 · 09:40 안영규 그룹장\n세미나 참석 후 11시부터 태성에스엔이 부스에서 ' + CONFIG.giftName + ' 증정(선착순 ' + CONFIG.giftCount + '명)'
+  });
+  return 'https://calendar.google.com/calendar/render?' + q.toString();
+}
+
+function focusTop(){
+  const h = app.querySelector('h1,h2');
+  if(h){h.tabIndex=-1;h.focus({preventScroll:true});}
+  window.scrollTo(0,0);
+}
+
+function renderStart(){
+  app.innerHTML = `
+  <div class="screen">
+    <p class="eyebrow">자동차 CAE 엔지니어 유형 테스트</p>
+    <div class="hero-icons" aria-hidden="true">🔁🙏♾️👀</div>
+    <h1>나는 어떤<br>CAE 엔지니어일까?</h1>
+    <p>현업에서 한 번쯤 겪어봤을 상황 3개.<br>가장 공감되는 걸 골라보세요.</p>
+    <div class="types-preview" aria-label="결과 유형 4가지">
+      ${types.map(t=>`<span>${t.icon} ${t.name}</span>`).join('')}
+    </div>
+    <button class="primary" id="start">▶ 30초 테스트 시작</button>
+    <p class="show-staff">결과 화면을 부스에서 보여주시면 ${CONFIG.boothGift}을 드려요.</p>
+  </div>`;
+  document.getElementById('start').onclick = () => {
+    step = 0; picks = [];
+    orders = questions.map(q => shuffle(q.options.map((_,i)=>i)));
+    render();
+  };
+}
+
+function renderQuestion(){
+  const q = questions[step];
+  app.innerHTML = `
+  <div class="screen">
+    <div class="progress" aria-label="3문항 중 ${step+1}번째">
+      ${questions.map((_,i)=>`<span class="${i<=step?'on':''}"></span>`).join('')}
+    </div>
+    <p class="eyebrow">Q${step+1} / 3</p>
+    <div class="q-icon" aria-hidden="true">${q.icon}</div>
+    <h2>${q.title}</h2>
+    <div class="choices">
+      ${orders[step].map(i=>`<button class="choice" data-type="${q.options[i].type}">
+        <span class="ic" aria-hidden="true">${types[q.options[i].type].icon}</span>
+        <span>${q.options[i].t}</span></button>`).join('')}
+    </div>
+    <button class="back" id="back">← ${step ? '이전 질문' : '처음으로'}</button>
+  </div>`;
+  app.querySelectorAll('.choice').forEach(b => b.onclick = () => {
+    picks[step] = Number(b.dataset.type);
+    step++;
+    render();
+  });
+  document.getElementById('back').onclick = () => { step--; render(); };
+}
+
+function resultType(){
+  const c = [0,0,0,0];
+  picks.forEach(t => c[t]++);
+  const max = Math.max(...c);
+  // 동점이면 마지막 질문(AI에게 맡길 일)의 선택을 우선
+  if (c[picks[2]] === max) return picks[2];
+  return c.indexOf(max);
+}
+
+function seminarGiftBlock(after){
+  if (after) {
+    return `
+    <section class="gift seminar">
+      <p class="g-label">🎁 세미나 참석자 기프트</p>
+      <h3>세미나에 참석하셨나요?<br>${CONFIG.giftName} 받아가세요!<span class="count">선착순 ${CONFIG.giftCount}명</span></h3>
+      <p>${CONFIG.giftPickupFrom}부터 태성에스엔이 부스에서 드립니다. 수량이 소진되면 증정이 마감돼요.</p>
+    </section>`;
+  }
+  return `
+  <section class="gift seminar">
+    <p class="g-label">🎁 세미나 참석자 기프트</p>
+    <h3>세미나 듣고 ${CONFIG.giftName} 받아가세요<span class="count">선착순 ${CONFIG.giftCount}명</span></h3>
+    <ol>
+      <li>${CONFIG.seminarDate} ${CONFIG.seminarTime} · ${CONFIG.seminarPlace}에서 세미나 참석</li>
+      <li>${CONFIG.giftPickupFrom}부터 태성에스엔이 부스 방문</li>
+      <li>선착순 ${CONFIG.giftCount}분께 ${CONFIG.giftName} 증정</li>
+    </ol>
+  </section>`;
+}
+
+function renderResult(){
+  const ti = resultType(), t = types[ti], s = sessions[t.session];
+  const after = isAfter();
+  app.innerHTML = `
+  <div class="screen">
+    <p class="eyebrow">🏁 당신의 CAE 엔지니어 유형은</p>
+    <div class="result-card">
+      <div class="result-icon" aria-hidden="true">${t.icon}</div>
+      <h1>${t.name}</h1>
+      <p class="quote">${t.quote}</p>
+      <p class="desc">${t.desc}</p>
+    </div>
+
+    <div class="session">
+      <span class="tag">${t.name}에게 추천하는 세션</span>
+      <time>${CONFIG.seminarDate} ${s.time} · ${CONFIG.seminarPlace}</time>
+      <strong>${s.title}</strong>
+      <span>${s.speaker}</span>
+      <p class="teaser">${t.teaser}</p>
+    </div>
+
+    ${seminarGiftBlock(after)}
+
+    ${after
+      ? `<a class="primary" href="${CONFIG.portalUrl}" target="_blank" rel="noopener noreferrer">세미나 자료 신청하기 ↗</a>`
+      : `<a class="primary" href="${calUrl()}" target="_blank" rel="noopener noreferrer">📅 세미나 일정 캘린더에 저장</a>`}
+
+    <details class="agenda">
+      <summary>전체 세미나 아젠다 보기</summary>
+      <div class="agenda-body">
+        <h3>AI로 연결되는 CAE의 미래</h3>
+        <p class="place">${CONFIG.seminarDate} ${CONFIG.seminarTime} · ${CONFIG.seminarPlace}</p>
+        <ol class="agenda-list">
+          ${sessions.map((x,i)=>`<li class="${i===t.session?'mine':''}">
+            <time>${x.time}${i===t.session?'<span class="me">내 유형 추천</span>':''}</time>
+            <strong>${x.title}</strong><span>${x.speaker}</span></li>`).join('')}
+        </ol>
+      </div>
+    </details>
+
+    <section class="gift booth">
+      <p class="g-label" style="color:var(--accent)">✅ 테스트 참여 선물</p>
+      <h3>이 화면을 부스 담당자에게 보여주세요</h3>
+      <p>테스트에 참여해주신 분께 ${CONFIG.boothGift}을 드립니다.</p>
+    </section>
+
+    <button class="secondary" id="restart">↻ 다시 해보기</button>
+  </div>`;
+  foot.textContent = '태성에스엔이 · 자동차 CAE × AI';
+  document.getElementById('restart').onclick = () => {
+    step = -1; picks = [];
+    foot.textContent = '3문항 · 약 30초 · 정답 없는 유형 테스트';
+    render();
+  };
+}
+
+function render(){
+  if (step < 0) renderStart();
+  else if (step < questions.length) renderQuestion();
+  else renderResult();
+  focusTop();
+}
+
+renderStart();
+</script>
+</body>
+</html>
